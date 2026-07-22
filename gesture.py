@@ -9,3 +9,18 @@ Responsibilities:
 Should NOT contain: MediaPipe initialization, canvas manipulation, or
 rendering. This module only transforms landmarks -> meaning.
 """
+
+
+
+
+
+def classify_gestures(fingers):
+
+        if fingers == [0,1,0,0,0]:
+            mode = "DRAW"
+        elif fingers == [0,1,1,0,0] :
+            mode = "SELECT"
+        else:
+            mode = "IDLE"
+
+        return mode

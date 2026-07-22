@@ -14,6 +14,9 @@ This file orchestrates other modules; it does not implement them.
 import cv2
 import time
 import hand_tracking as ht
+import gesture as gs
+
+
 
 pTime = 0
 cap = cv2.VideoCapture(0)
@@ -30,7 +33,8 @@ while True:
     img = detector.findHands(img)
     lmlist = detector.findPosition(img)
     fingers = detector.fingers()
-    print(fingers)
+    mode = gs.classify_gestures(fingers)
+    print(mode)
     # if len(lmlist) != 0 :
     #     print(lmlist)
 
