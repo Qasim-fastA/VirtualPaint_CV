@@ -63,5 +63,35 @@ class HandsDetector():
                     if draw:
                         cv2.circle(img, (cx, cy), 3, (255, 0, 0),
                                    cv2.FILLED)  # will show a circle at the particular id
+            self.lmlist = lmlist
             return lmlist
 
+    def fingers(self):
+        fingers = [] # will hold 5 boolean-like values: [thumb, index, middle, ring, pinky]
+        if len(self.lmlist) != 0:
+
+            if self.lmlist[4][1] < self.lmlist[3][1]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+            if self.lmlist[8][2] < self.lmlist[6][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+            if self.lmlist[12][2] < self.lmlist[10][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+            if self.lmlist[16][2] < self.lmlist[14][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+            if self.lmlist[20][2] < self.lmlist[18][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+        return fingers

@@ -29,9 +29,10 @@ while True:
     img = cv2.flip(img, 1)
     img = detector.findHands(img)
     lmlist = detector.findPosition(img)
-
-    if len(lmlist) != 0 :
-        print(lmlist)
+    fingers = detector.fingers()
+    print(fingers)
+    # if len(lmlist) != 0 :
+    #     print(lmlist)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
